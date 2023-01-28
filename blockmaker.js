@@ -31,20 +31,21 @@ function block(input, options) {
         block.arguments[block.text.match(/\((.*?)\)/)[1].split(";")[0]] = {
             type: "number",
             menu: block.text.match(/\((.*?)\)/)[1].split(";")[1],
-            defaultValue: block.text.match(/\((.*?)\)/)[1].split(";")[2]
+            defaultValue: Number(block.text.match(/\((.*?)\)/)[1].split(";")[2])
         };
         block.text = block.text.replace(block.text.match(/\((.*?)\)/)[1], block.text.match(/\((.*?)\)/)[1].split(";")[0]);
         block.text = block.text.replace("(", "{");
     }
     while (block.text.includes("<")) {
-        block.arguments[block.text.match(/\<(.*?)\>/)[1]] = {
-            type: "Boolean"
+        block.arguments[block.text.match(/\<(.*?)\>/)[1].split(";")[0]] = {
+            type: "Boolean",
+            menu: block.text.match(/\<(.*?)\>/)[1].split(";")[1],
+            defaultValue: Boolean(block.text.match(/\<(.*?)\>/)[1].split(";")[2])
         };
         block.text = block.text.replace("<", "{");
     }
     block.text = block.text.replaceAll("{", "[");
     block.text = block.text.replaceAll(")", "]");
     block.text = block.text.replaceAll(">", "]");
-
     return typeof options == "object" ? Object.assign(block, options) : block;
 }
