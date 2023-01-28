@@ -8,12 +8,12 @@ Create blocks for custom scratch extensions easily
     text: "if [condition] then [yes] else [no]",
     arguments: {
         condition: {
-            type: Scratch.ArgumentType.BOOLEAN,
+            type: Scratch.ArgumentType.BOOLEAN
         },
         yes: {
             type: Scratch.ArgumentType.STRING,
             menu: "menu",
-            defaultValue: "yes"
+            defaultValue: "default"
         },
         no: {
             type: Scratch.ArgumentType.NUMBER,
@@ -24,7 +24,7 @@ Create blocks for custom scratch extensions easily
 ```
 ### The new way:
 ```js
-block("(ternary):if <condition;;> then [yes;menu;yes] else (no;;0)")
+block("(ternary):if <condition> then [yes;menu;default] else (no;0)")
 ```
 ### Advantages:
 - Small and fast
