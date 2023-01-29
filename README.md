@@ -26,8 +26,9 @@ Create blocks for custom scratch extensions easily
 ```js
 block("(ternary):if <condition> then [yes;menu;default] else (no;0)")
 ```
-### Advantages:
-- Small and fast
+### Upsides:
 - Minimal boilerplate
 - Easy to learn
 - Flexible
+### Downside:
+Using any brackets outside of defining arguments is prohibited
